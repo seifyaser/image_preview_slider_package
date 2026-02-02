@@ -6,17 +6,14 @@ Creating a modern image preview experience in Flutter has never been easier 🚀
 
 ---
 
-## Animation
+## Screenshots
 
 <p align="center">
-  <img src="screenshots/preview.gif" height="650px">
+  <img src="https://iili.io/fZJ37CF.png" height="450"/>
+  <img src="https://iili.io/fZJ3a4a.png" height="450"/>
+  <img src="https://iili.io/fZJ3YEg.md.png" height="450"/>
 </p>
 
-<p align="center">
-  <img src="screenshots/screenshot_1.png" height="450px"/>
-  <img src="screenshots/screenshot_2.png" height="450px"/>
-  <img src="screenshots/screenshot_3.png" height="450px"/>
-</p>
 
 ---
 

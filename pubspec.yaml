@@ -1,6 +1,6 @@
 name: image_slider_preview
 description: A Flutter image slider with indicator and full screen image preview with zoom support.
-version: 0.0.3
+version: 0.0.5
 
 homepage: https://github.com/seifyaser/image_preview_slider_pakacge
 repository: https://github.com/seifyaser/image_preview_slider_pakacge
