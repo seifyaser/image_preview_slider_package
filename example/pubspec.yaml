@@ -1,0 +1,11 @@
+name: image_slider_preview_example
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  image_slider_preview:
+    path: ../
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
