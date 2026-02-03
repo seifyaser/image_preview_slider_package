@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Image Slider Preview Example'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
+        body: const Padding(
+          padding: EdgeInsets.all(16),
           child: ImageSliderWithIndicator(
-            images: const [
+            images: [
               'https://picsum.photos/400/300',
               'https://picsum.photos/401/300',
               'https://picsum.photos/402/300',
