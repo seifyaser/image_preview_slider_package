@@ -19,12 +19,10 @@ class _ImagePreviewPageState extends State<ImagePreviewPage> {
   late PageController _pageController;
   late int currentIndex;
 
-  // للتحكم في الـ zoom والـ transformation
   final TransformationController _transformationController = TransformationController();
 
   static const double _minScale = 0.85;
   static const double _maxScale = 4.5;
-  static const double _doubleTapQuickScale = 2.4;
 
   @override
   void initState() {
@@ -39,25 +37,6 @@ class _ImagePreviewPageState extends State<ImagePreviewPage> {
     _transformationController.dispose();
     super.dispose();
   }
-
-void _onDoubleTap() {
-  final currentScale = _transformationController.value.getMaxScaleOnAxis();
-
-  if (currentScale > 1.1) {
-    // رجوع للوضع الطبيعي (zoom out)
-    _transformationController.value = Matrix4.identity();
-  } else {
-    // زوم سريع مريح (zoom in)
-    _transformationController.value = Matrix4.identity()
-      ..scaleByDouble(
-        _doubleTapQuickScale,  
-        _doubleTapQuickScale,  
-        1.0,                   
-        1.0,                  
-      );
-  }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +56,12 @@ void _onDoubleTap() {
       body: SafeArea(
         child: Stack(
           children: [
-            // الصور نفسها
             PageView.builder(
               controller: _pageController,
               itemCount: widget.images.length,
               onPageChanged: (index) {
                 setState(() {
                   currentIndex = index;
-                  // مهم: نرجّع الزوم للوضع الافتراضي عند تغيير الصورة
                   _transformationController.value = Matrix4.identity();
                 });
               },
@@ -93,30 +70,20 @@ void _onDoubleTap() {
                   transformationController: _transformationController,
                   minScale: _minScale,
                   maxScale: _maxScale,
-                  boundaryMargin: const EdgeInsets.all(100),
+                  boundaryMargin: const EdgeInsets.all(80), // شوية مساحة مريحة
                   clipBehavior: Clip.none,
                   panEnabled: true,
                   scaleEnabled: true,
-                  child: GestureDetector(
-                    // double tap → zoom in / out
-                    onDoubleTap: _onDoubleTap,
-
-                    // اختياري: double tap down لو حابب تحسب مكان اللمس بالظبط
-                    // onDoubleTapDown: (details) { ... },
-
-                    child: Center(
-                      child: CachedImage(
-                        imageUrl: widget.images[index],
-                        fit: BoxFit.contain,
-                        // لو عندك placeholder أو loading indicator حلو، ضيفه هنا
-                      ),
+                  child: Center(
+                    child: CachedImage(
+                      imageUrl: widget.images[index],
+                      fit: BoxFit.contain,
                     ),
                   ),
                 );
               },
             ),
 
-            // مؤشر النقاط تحت (dots indicator)
             if (widget.images.length > 1)
               Positioned(
                 bottom: 20,
@@ -132,8 +99,7 @@ void _onDoubleTap() {
                       width: currentIndex == index ? 20 : 8,
                       height: 8,
                       decoration: BoxDecoration(
-                        color:
-                            currentIndex == index ? Colors.white : Colors.white54,
+                        color: currentIndex == index ? Colors.white : Colors.white54,
                         borderRadius: BorderRadius.circular(4),
                         boxShadow: const [
                           BoxShadow(
@@ -148,27 +114,7 @@ void _onDoubleTap() {
                 ),
               ),
 
-            // اختياري: رقم الصورة الحالية (مثل 3/12)
-            if (widget.images.length > 1)
-              Positioned(
-                top: 16,
-                right: 16,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    "${currentIndex + 1} / ${widget.images.length}",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
+           
           ],
         ),
       ),
