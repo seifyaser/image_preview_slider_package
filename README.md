@@ -42,7 +42,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  image_slider_preview: ^0.0.7
+  image_slider_preview: ^0.0.8
 ```
 
 ---

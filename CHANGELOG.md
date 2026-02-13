@@ -1,3 +1,6 @@
+## 0.0.8
+* Added demo GIF to README.
+
 ## 0.0.7
 * Added optional auto-play carousel (`autoPlay`, `autoPlayInterval`, `autoPlayAnimationDuration`).
 * Auto-play pauses on user drag and resumes on release.
