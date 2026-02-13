@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
                 'https://picsum.photos/401/300',
                 'https://picsum.photos/402/300',
               ],
-              height: 300,
+              height: 100,
               borderRadius: 24,
               autoPlay: true,
             ),

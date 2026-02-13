@@ -17,6 +17,14 @@ Creating a modern image preview experience in Flutter has never been easier 🚀
 
 ---
 
+## Demo
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/seifyaser/image_preview_slider_pakacge/main/screenshots/demo.gif" height="450"/>
+</p>
+
+---
+
 ## Features
 
 - 📸 Image slider with page indicator  
